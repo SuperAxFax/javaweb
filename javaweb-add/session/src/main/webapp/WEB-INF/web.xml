@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+    <servlet>
+        <servlet-name>SessionDemo01</servlet-name>
+        <servlet-class>com.kuang.servlet.SessionDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo01</servlet-name>
+        <url-pattern>/s1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionDemo02</servlet-name>
+        <servlet-class>com.kuang.servlet.SessionDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo02</servlet-name>
+        <url-pattern>/s2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionDemo03</servlet-name>
+        <servlet-class>com.kuang.servlet.SessionDemo03</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo03</servlet-name>
+        <url-pattern>/s3</url-pattern>
+    </servlet-mapping>
+
+
+    <session-config>
+        <!--所表示的意思是Session会在1分钟后自动失效，以分钟为单位
+        如果网站的访问量很大则需要将session失效的时间控制的小一点。
+        因为如果时间太长并且访问的人又过多有可能会导致网站崩溃。
+        也可以将该网站设置成cookie的方式将数据保存在客户端来解决
+        访问量过大的问题。
+        -->
+        <session-timeout>1</session-timeout>
+    </session-config>
+</web-app>

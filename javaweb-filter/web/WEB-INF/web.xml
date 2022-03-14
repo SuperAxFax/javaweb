@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>showsservlet</servlet-name>
+        <servlet-class>com.kuang.servlet.showsservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showsservlet</servlet-name>
+        <url-pattern>/servlet/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showsservlet</servlet-name>
+        <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.kuang.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/servlet/login</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.kuang.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/servlet/logout</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>com.kuang.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <!--只要是经过/servlet下的任何请求都会优先经过此过滤器！这也就是上面servlet中埋下的两个伏笔，一个会经过过滤器，
+        而另一个则不会经过！
+        -->
+        <url-pattern>/servlet/*</url-pattern>
+        <!--
+        <url-pattern>/*</url-pattern>表示的是程序所有的内容都要经过过滤器。但是我们一般不会这样写。
+        我们的解决办法是写多个过滤器。<url-pattern>/包名/*</url-pattern>，这样可以方便我们对不同的
+        包进行特定的过滤，十分方便。
+        -->
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SysFilter</filter-name>
+        <filter-class>com.kuang.filter.SysFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SysFilter</filter-name>
+        <url-pattern>/sys/*</url-pattern>
+    </filter-mapping>
+    
+    <!--注册监听器-->
+    <listener>
+        <listener-class>com.kuang.listener.OnlineCountListener </listener-class>
+    </listener>
+
+</web-app>
